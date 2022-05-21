@@ -1,8 +1,12 @@
+import MainPage from "./pages/MainPage";
+import GlobalStyle from "./styles/GlobalStyles";
+
 function App() {
   return (
-    <div className="App">
-      Today Ramen
-    </div>
+    <>
+      <GlobalStyle />
+      <MainPage />
+    </>
   );
 }
 
