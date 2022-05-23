@@ -8,6 +8,7 @@ function App() {
       <MainPage />
     </>
   );
+  return <div className="App">Today Ramen</div>;
 }
 
 export default App;
