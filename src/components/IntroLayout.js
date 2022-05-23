@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const IntroSection = styled.section`
   margin: 0;
@@ -12,7 +12,7 @@ const IntroTitle = styled.h3`
   padding-top: 86px;
   margin-top: 0;
   font-size: 58px;
-  font-family: "Gmarket Sans";
+  font-family: 'Gmarket Sans';
 `;
 
 const IntroTitlePoint = styled.span`
@@ -21,7 +21,7 @@ const IntroTitlePoint = styled.span`
 
 const IntroText = styled.article`
   color: black;
-  font-family: "Gmarket Sans";
+  font-family: 'Gmarket Sans';
   font-size: 28px;
   text-align: center;
   line-height: 128%;
@@ -50,8 +50,7 @@ const IntroLayout = () => {
         <br />
         편의점엔 원하는 라면이 없어 실망했던
         <br />
-        여러분들을 위해 <IntroTextPoint>오늘의 라면</IntroTextPoint>이
-        탄생했습니다.
+        여러분들을 위해 <IntroTextPoint>오늘의 라면</IntroTextPoint>이 탄생했습니다.
       </IntroText>
     </IntroSection>
   );

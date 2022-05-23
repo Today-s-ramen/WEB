@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import BgImg from "../assets/MainBannerBg.png";
+import React from 'react';
+import styled from 'styled-components';
+import BgImg from '../assets/MainBannerBg.png';
 
 const MainBannerSection = styled.section`
   height: 856px;
@@ -17,7 +17,7 @@ const SubTitle = styled.div`
   font-size: 28px;
   text-align: center;
   padding-top: 70px;
-  font-family: "GmarketSansMedium";
+  font-family: 'GmarketSansMedium';
 `;
 
 const SubTitlePoint = styled.span`
@@ -31,7 +31,7 @@ const MainTitle = styled.div`
   font-size: 62px;
   text-align: center;
   margin-top: 11px;
-  font-family: "GmarketSansBold";
+  font-family: 'GmarketSansBold';
   font-weight: 400;
 `;
 

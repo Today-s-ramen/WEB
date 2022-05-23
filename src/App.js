@@ -1,5 +1,5 @@
-import MainPage from "./pages/MainPage";
-import GlobalStyle from "./styles/GlobalStyles";
+import MainPage from './pages/MainPage';
+import GlobalStyle from './styles/GlobalStyles';
 
 function App() {
   return (
@@ -8,7 +8,6 @@ function App() {
       <MainPage />
     </>
   );
-  return <div className="App">Today Ramen</div>;
 }
 
 export default App;
