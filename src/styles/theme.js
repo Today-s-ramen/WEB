@@ -9,6 +9,7 @@ const color = {
   blue: '#0285F4',
   green: '#4FC580',
   gray: '#7D7D7D',
+  lightgray: '#B0B0B0',
 };
 
 const font = {
