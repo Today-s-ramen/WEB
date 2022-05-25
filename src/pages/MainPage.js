@@ -1,4 +1,4 @@
-import DetailIntro from '../components/DetailIntro';
+import DetailIntro from '../components/main/DetailIntro';
 import IntroLayout from '../components/IntroLayout';
 import MainBanner from '../components/MainBanner';
 
