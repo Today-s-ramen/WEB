@@ -1,5 +1,11 @@
+import { Header } from 'components';
+
 const ReviewPage = () => {
-  return <div>ReviewPage</div>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 };
 
 export default ReviewPage;
