@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+
 import SubscribeTitle from './SubscribeTitle';
 import ShipmentPeriod from './ShipmentPeriod';
 import ShipmentQuantity from './ShipmentQuantity';
 import PeriodNotify from './PeriodNotify';
+import SubscribePageMove from './SubscribePageMove';
 
 const SubscribeWrapper = styled.div`
   width: 100vw;
@@ -37,6 +39,7 @@ const Subscribe = () => {
         initialList={initialQuantityList}
         setSelectedQuantity={setSelectedQuantity}
       />
+      <SubscribePageMove />
       <PeriodNotify />
     </SubscribeWrapper>
   );

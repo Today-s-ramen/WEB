@@ -1,5 +1,13 @@
+import { Header, Subscribe, Footer } from 'components';
+
 const SubscribePage = () => {
-  return <div>SubscribePage</div>;
+  return (
+    <div>
+      <Header />
+      <Subscribe />
+      <Footer />
+    </div>
+  );
 };
 
 export default SubscribePage;
