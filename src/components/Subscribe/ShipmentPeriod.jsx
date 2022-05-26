@@ -1,11 +1,6 @@
 import styled from 'styled-components';
-
-const periodList = [
-  { key: 0, period: '한 달에 1회' },
-  { key: 1, period: '두 달에 1회' },
-  { key: 2, period: '세 달에 1회' },
-  { key: 3, period: '여섯 달에 1회' },
-];
+import radioOff from 'assets/btn_radio_off.svg';
+import radioOn from 'assets/btn_radio_on.svg';
 
 const ShipmentPeriodWrapper = styled.section`
   display: flex;
@@ -26,41 +21,64 @@ const ShipmentPeriodWrapper = styled.section`
     justify-content: space-between;
     cursor: pointer;
   }
+`;
 
-  li {
-    width: 100%;
-    height: 63px;
-    border: solid 2px ${({ theme }) => theme.color.lightgray};
-    border-radius: 11px;
-    display: flex;
-    align-items: center;
-    padding: 16px;
+const ShipmentPeriodItem = styled.li`
+  width: 100%;
+  height: 63px;
+  border: solid 2px ${(props) => (props.selected ? props.theme.color.orange : props.theme.color.lightgray)};
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  padding: 16px;
 
-    input {
-      padding: 0;
-      margin: 0;
-      width: 16px;
-      height: 16px;
-    }
+  input {
+    padding: 0;
+    margin: 0;
+    width: 16px;
+    height: 16px;
+  }
 
-    span {
-      font: ${({ theme }) => theme.font.caption4};
-      font-size: 17px;
-      padding-left: 15px;
-    }
+  span {
+    font: ${({ theme }) => theme.font.caption4};
+    font-size: 17px;
+    padding-left: 15px;
   }
 `;
 
-const ShipmentPeriod = () => {
+const RadioBtn = styled.button`
+  border: 0;
+  outline: 0;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background-image: url(${(props) => props.bg});
+  background-size: 100% 100%;
+`;
+
+const ShipmentPeriod = ({ periodList, initialList, setSelectedPeriod }) => {
+  const handleSelect = (e) => {
+    const targetPeriod = e.target.closest('li').textContent;
+    if (!targetPeriod) return;
+    const newPeriodListState = initialList.map(({ key, period }) => {
+      return {
+        key,
+        period,
+        selected: period === targetPeriod,
+      };
+    });
+    setSelectedPeriod(newPeriodListState);
+  };
+
   return (
     <ShipmentPeriodWrapper>
       <h3>배송주기</h3>
-      <ul>
-        {periodList?.map(({ key, period }) => (
-          <li key={key}>
-            <input type="radio" />
+      <ul onClick={handleSelect}>
+        {periodList?.map(({ key, period, selected }) => (
+          <ShipmentPeriodItem key={key} selected={selected}>
+            <RadioBtn bg={selected ? radioOn : radioOff}></RadioBtn>
             <span className="text">{period}</span>
-          </li>
+          </ShipmentPeriodItem>
         ))}
       </ul>
     </ShipmentPeriodWrapper>
