@@ -24,7 +24,7 @@ const Review = () => {
   return (
     <ReviewWrapper>
       <ReviewHeader packageName={reviewData.packageName} userName={reviewData.userName} rates={reviewData.rates} />
-      <ReviewContent reviewDetail={reviewData.reviewDatail} />
+      <ReviewContent imageList={reviewData.imageList} reviewDetail={reviewData.reviewDatail} />
     </ReviewWrapper>
   );
 };
@@ -33,5 +33,4 @@ export default Review;
 
 const ReviewWrapper = styled.div`
   width: 100vw;
-  height: 100vh;
 `;
