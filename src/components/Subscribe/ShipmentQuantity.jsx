@@ -57,13 +57,13 @@ const RadioBtn = styled.button`
 `;
 
 const ShipmentQuantity = ({ quantityList, initialList, setSelectedQuantity }) => {
-  const handleSelect = (clickedKey) => {
+  const handleSelect = (selectedKey) => {
     const updatedQuantityListState = initialList.map(({ key, quantity, price }) => {
       return {
         key,
         quantity,
         price,
-        selected: key === clickedKey,
+        selected: key === selectedKey,
       };
     });
     setSelectedQuantity(updatedQuantityListState);

@@ -50,15 +50,15 @@ const RadioBtn = styled.button`
 `;
 
 const ShipmentPeriod = ({ periodList, initialList, setSelectedPeriod }) => {
-  const handleSelect = (clickedKey) => {
-    const newPeriodListState = initialList.map(({ key, period }) => {
+  const handleSelect = (selectedKey) => {
+    const updatedPeriodListState = initialList.map(({ key, period }) => {
       return {
         key,
         period,
-        selected: key === clickedKey,
+        selected: key === selectedKey,
       };
     });
-    setSelectedPeriod(newPeriodListState);
+    setSelectedPeriod(updatedPeriodListState);
   };
 
   return (
