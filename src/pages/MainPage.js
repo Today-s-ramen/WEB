@@ -1,6 +1,6 @@
-import DetailIntro from '../components/main/DetailIntro';
-import IntroLayout from '../components/main/IntroLayout';
-import MainBanner from '../components/main/MainBanner';
+import DetailIntro from '../components/Main/DetailIntro';
+import IntroLayout from '../components/Main/IntroLayout';
+import MainBanner from '../components/Main/MainBanner';
 
 const MainPage = () => {
   return (
