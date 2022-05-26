@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import BgImg from '../assets/MainBannerBg.png';
+import BgImg from '../../assets/MainBannerBg.png';
 
 const MainBannerSection = styled.section`
   height: 856px;
