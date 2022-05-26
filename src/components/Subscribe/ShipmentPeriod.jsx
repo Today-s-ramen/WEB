@@ -32,13 +32,6 @@ const ShipmentPeriodItem = styled.li`
   align-items: center;
   padding: 16px;
 
-  input {
-    padding: 0;
-    margin: 0;
-    width: 16px;
-    height: 16px;
-  }
-
   span {
     font: ${({ theme }) => theme.font.caption4};
     font-size: 17px;
@@ -57,14 +50,12 @@ const RadioBtn = styled.button`
 `;
 
 const ShipmentPeriod = ({ periodList, initialList, setSelectedPeriod }) => {
-  const handleSelect = (e) => {
-    const targetPeriod = e.target.closest('li').textContent;
-    if (!targetPeriod) return;
+  const handleSelect = (clickedKey) => {
     const newPeriodListState = initialList.map(({ key, period }) => {
       return {
         key,
         period,
-        selected: period === targetPeriod,
+        selected: key === clickedKey,
       };
     });
     setSelectedPeriod(newPeriodListState);
@@ -73,9 +64,9 @@ const ShipmentPeriod = ({ periodList, initialList, setSelectedPeriod }) => {
   return (
     <ShipmentPeriodWrapper>
       <h3>배송주기</h3>
-      <ul onClick={handleSelect}>
+      <ul>
         {periodList?.map(({ key, period, selected }) => (
-          <ShipmentPeriodItem key={key} selected={selected}>
+          <ShipmentPeriodItem key={key} selected={selected} onClick={() => handleSelect(key)}>
             <RadioBtn bg={selected ? radioOn : radioOff}></RadioBtn>
             <span className="text">{period}</span>
           </ShipmentPeriodItem>
