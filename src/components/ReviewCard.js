@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Img from 'assets/reviewImg.png';
-import Slider from 'react-slick';
 
 const ReviewCard = styled.article`
   background-color: white;
