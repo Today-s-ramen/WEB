@@ -1,9 +1,11 @@
-import { Header } from 'components';
+import { Header, Review, Footer } from 'components';
 
 const ReviewPage = () => {
   return (
     <div>
       <Header />
+      <Review />
+      <Footer />
     </div>
   );
 };

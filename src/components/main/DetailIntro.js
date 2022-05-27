@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import Detail_1 from '../assets/Detail_1.png';
-import Detail_2 from '../assets/Detail_2.png';
-import Detail_3 from '../assets/Detail_3.png';
-import Detail_4 from '../assets/Detail_4.png';
-import addBtn from '../assets/add.png';
-import charactor from '../assets/charactor.png';
+import Detail_1 from '../../assets/Detail_1.png';
+import Detail_2 from '../../assets/Detail_2.png';
+import Detail_3 from '../../assets/Detail_3.png';
+import Detail_4 from '../../assets/Detail_4.png';
+import addBtn from '../../assets/add.png';
+import charactor from '../../assets/charactor.png';
 
 const DetailCardContainer = styled.section`
   width: 100%;
