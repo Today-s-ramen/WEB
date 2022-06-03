@@ -38,8 +38,8 @@ const ReviewImage = ({ imageList }) => {
       </LeftButton>
       <SlideWrapper>
         <SlideBox ref={slideRef}>
-          {imageList.map((item) => {
-            return <Image key={item.id} src={item.img} alt="리뷰 사진" />;
+          {imageList.map((item, index) => {
+            return <Image key={index} src={item} alt="리뷰 사진" />;
           })}
         </SlideBox>
       </SlideWrapper>
