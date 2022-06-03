@@ -1,7 +1,7 @@
 import API_BASE_URL from 'api';
 
 const getDeliveryOptions = async () => {
-  const response = await fetch(`${API_BASE_URL}/subscribe`);
+  const response = await fetch(`${API_BASE_URL}` + 'subscribe');
   const {
     success,
     data: { deliveryPeriodOptions, deliveryQuantityOptions },
@@ -23,7 +23,7 @@ const postSubscribeOptions = async ({ selectedPeriod, selectedQuantity }) => {
       option: selectedQuantity,
     },
   };
-  const { ok } = await fetch(`${API_BASE_URL}/subscribe`, {
+  const { ok } = await fetch(`${API_BASE_URL}` + 'subscribe', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
