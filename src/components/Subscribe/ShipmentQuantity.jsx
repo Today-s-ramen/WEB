@@ -21,6 +21,7 @@ const ShipmentQuantityWrapper = styled.section`
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+    z-index: 2;
   }
 `;
 
@@ -56,9 +57,9 @@ const RadioBtn = styled.button`
   background-size: 100% 100%;
 `;
 
-const ShipmentQuantity = ({ quantityList, initialList, setSelectedQuantity }) => {
+const ShipmentQuantity = ({ quantityList, setSelectedQuantity }) => {
   const handleSelect = (selectedKey) => {
-    const updatedQuantityListState = initialList.map(({ key, quantity, price }) => {
+    const updatedQuantityListState = quantityList.map(({ key, quantity, price }) => {
       return {
         key,
         quantity,

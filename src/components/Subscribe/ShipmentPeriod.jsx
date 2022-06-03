@@ -20,6 +20,7 @@ const ShipmentPeriodWrapper = styled.section`
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+    z-index: 2;
   }
 `;
 
@@ -49,9 +50,9 @@ const RadioBtn = styled.button`
   background-size: 100% 100%;
 `;
 
-const ShipmentPeriod = ({ periodList, initialList, setSelectedPeriod }) => {
+const ShipmentPeriod = ({ periodList, setSelectedPeriod }) => {
   const handleSelect = (selectedKey) => {
-    const updatedPeriodListState = initialList.map(({ key, period }) => {
+    const updatedPeriodListState = periodList.map(({ key, period }) => {
       return {
         key,
         period,
@@ -60,7 +61,6 @@ const ShipmentPeriod = ({ periodList, initialList, setSelectedPeriod }) => {
     });
     setSelectedPeriod(updatedPeriodListState);
   };
-
   return (
     <ShipmentPeriodWrapper>
       <h3>배송주기</h3>
