@@ -84,6 +84,7 @@ const ReviewCardSection = () => {
 
   useEffect(() => {
     getReviews();
+    setInterval(slideReviews, 4000);
   }, []);
 
   const handleClick = (id) => {
@@ -91,17 +92,11 @@ const ReviewCardSection = () => {
   };
 
   // TODO Carousel
-  // const slideReviews = () => {
-  //   if (moveReview.current && reviewList) {
-  //     moveReview.current.style.transform = 'translateX(330px)';
-  //     setReviewList((prevList) => [...prevList.slice(1), prevList[0]]);
-  //     changeIndex();
-  //   }
-  // };
-
-  // const changeIndex = () => {
-  //   setReviewList((prevList) => [...prevList.slice(1), prevList[0]]);
-  // };
+  const slideReviews = () => {
+    if (moveReview.current && reviewList) {
+      setReviewList((prevList) => [...prevList.slice(1), prevList[0]]);
+    }
+  };
 
   const showReviewList = () => {
     return reviewList?.map((review) => (
