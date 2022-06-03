@@ -69,7 +69,7 @@ const DetailIntro = () => {
       <DetailCardContainer>
         <DetailCardLeftside>
           <DetailCard src={Detail_1} />
-          <AddBtn src={addBtn} style={{ marginTop: '75px', marginLeft: '539px' }} />
+          <AddBtn src={addBtn} style={{ marginTop: '75px', marginLeft: '559px' }} />
           <CardText style={{ marginTop: '65px', marginLeft: '90px' }}>
             <CardTextPoint>오직 구독으로 누리는 혜택</CardTextPoint>
             <br />
@@ -78,8 +78,8 @@ const DetailIntro = () => {
             평생 무료배송 받아요!
           </CardText>
           <DetailCard src={Detail_3} />
-          <AddBtn src={addBtn} style={{ marginTop: '770px', marginLeft: '539px' }} />
-          <CardText style={{ marginTop: '770px', marginLeft: '90px' }}>
+          <AddBtn src={addBtn} style={{ marginTop: '840px', marginLeft: '579px' }} />
+          <CardText style={{ marginTop: '840px', marginLeft: '90px' }}>
             <CardTextPoint>매번 다른 라면으로 먹어봐야죠!</CardTextPoint>
             <br />
             배송 받을 라면을
@@ -98,8 +98,8 @@ const DetailIntro = () => {
             나에게 맞게 선택해요!
           </CardText>
           <DetailCard src={Detail_4} />
-          <AddBtn src={addBtn} style={{ marginTop: '770px', marginLeft: '539px' }} />
-          <CardText style={{ marginTop: '770px', marginLeft: '90px' }}>
+          <AddBtn src={addBtn} style={{ marginTop: '840px', marginLeft: '559px' }} />
+          <CardText style={{ marginTop: '840px', marginLeft: '90px' }}>
             <CardTextPoint>해외라면을 포함한 100여 종 인기라면!</CardTextPoint>
             <br />
             즐겨먹던 라면부터
