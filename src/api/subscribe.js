@@ -12,6 +12,23 @@ const getDeliveryOptions = async () => {
   };
 };
 
-const registerSubscribe = async () => {};
+const postSubscribeOptions = async ({ selectedPeriod, selectedQuantity }) => {
+  const bodyData = {
+    deliveryPeriod: {
+      option: selectedPeriod,
+    },
+    deliveryQuantity: {
+      option: selectedQuantity,
+    },
+  };
+  const { ok } = await fetch('subscribe', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(bodyData),
+  });
+  return { isOK: ok };
+};
 
-export { getDeliveryOptions, registerSubscribe };
+export { getDeliveryOptions, postSubscribeOptions };
