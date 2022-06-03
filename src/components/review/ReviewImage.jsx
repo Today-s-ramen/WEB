@@ -4,6 +4,7 @@ import Left from '../../assets/Left.svg';
 import Right from '../../assets/Right.svg';
 
 import { useState, useRef, useEffect } from 'react';
+import uuid from 'react-uuid';
 
 const ReviewImage = ({ imageList }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -38,8 +39,8 @@ const ReviewImage = ({ imageList }) => {
       </LeftButton>
       <SlideWrapper>
         <SlideBox ref={slideRef}>
-          {imageList.map((item, index) => {
-            return <Image key={index} src={item} alt="리뷰 사진" />;
+          {imageList.map((item) => {
+            return <Image key={uuid()} src={item} alt="리뷰 사진" />;
           })}
         </SlideBox>
       </SlideWrapper>
