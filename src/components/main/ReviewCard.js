@@ -78,7 +78,7 @@ const ReviewCardSection = () => {
   const getReviews = async () => {
     const {
       data: { data },
-    } = await axios.get(`${API_BASE_URL}` + '/review');
+    } = await axios.get(`${API_BASE_URL}` + 'review');
     setReviewList(data);
   };
 
