@@ -29,8 +29,10 @@ const BannerTitle = styled.h1`
   margin-bottom: 0;
 `;
 const SubTitle = styled.span`
+  display: inline-block;
   color: #f44420;
-  font-size: 22px;
+  font: ${({ theme }) => theme.font.subhead3};
+  margin-bottom: 20px;
 `;
 
 const SnsImg = styled.img`

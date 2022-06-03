@@ -37,13 +37,14 @@ const CardText = styled.text`
   font-size: 40px;
   font-weight: 400;
   position: absolute;
+  margin-top: 10px;
 `;
 
 const CardTextPoint = styled.span`
+  display: inline-block;
   color: #f44420;
-  font-family: 'GmarketSansMedium';
-  font-size: 22px;
-  font-weight: 400;
+  font: ${({ theme }) => theme.font.subhead3};
+  margin-bottom: 10px;
 `;
 
 const AddBtn = styled.img`
@@ -68,7 +69,7 @@ const DetailIntro = () => {
       <DetailCardContainer>
         <DetailCardLeftside>
           <DetailCard src={Detail_1} />
-          <AddBtn src={addBtn} style={{ marginTop: '65px', marginLeft: '539px' }} />
+          <AddBtn src={addBtn} style={{ marginTop: '75px', marginLeft: '539px' }} />
           <CardText style={{ marginTop: '65px', marginLeft: '90px' }}>
             <CardTextPoint>오직 구독으로 누리는 혜택</CardTextPoint>
             <br />

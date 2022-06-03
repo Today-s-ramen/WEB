@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import BgImg from '../../assets/MainBannerBg.png';
 
 const MainBannerSection = styled.section`
-  height: 856px;
+  height: 940px;
   width: 100%;
   background-image: url(${BgImg});
-  height: 500px;
+  /* height: 500px; */
   background-size: cover;
   padding-bottom: 300px;
   margin: 0;
@@ -14,6 +14,7 @@ const MainBannerSection = styled.section`
 
 const SubTitle = styled.div`
   color: black;
+  font: ${({ theme }) => theme.font.subhead2};
   font-size: 28px;
   text-align: center;
   padding-top: 70px;

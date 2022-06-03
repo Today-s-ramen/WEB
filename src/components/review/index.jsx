@@ -1,30 +1,35 @@
 import styled from 'styled-components';
 
-import pic1 from '../../assets/ReviewImage1.png';
-import pic2 from '../../assets/ReviewImage2.png';
-
 import ReviewHeader from './ReviewHeader';
 import ReviewContent from './ReviewContent';
 
-const reviewData = {
-  id: 0,
-  packageName: '자유구성 (Single)',
-  rates: 5,
-  userName: '홍길동',
-  imageList: [
-    { id: 0, img: pic1 },
-    { id: 1, img: pic2 },
-  ],
-  reviewDatail: `이렇게 하나하나 사오기 힘든데 너무 좋아요!!
-친구 선물인데 진짜 좋아요
-매일 하나씩 뭐먹을지 고민하는게 즐거워요!`,
-};
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const Review = () => {
+  const [review, setReview] = useState(null);
+  let { review_id } = useParams();
+
+  useEffect(() => {
+    const fetchReview = async () => {
+      try {
+        setReview(null);
+
+        const { data } = await axios.get(`/review/${review_id}`);
+        setReview(data.data);
+      } catch (e) {
+        console.log('error');
+      }
+    };
+    fetchReview();
+  }, []);
+
+  if (!review) return null;
   return (
     <ReviewWrapper>
-      <ReviewHeader packageName={reviewData.packageName} userName={reviewData.userName} rates={reviewData.rates} />
-      <ReviewContent imageList={reviewData.imageList} reviewDetail={reviewData.reviewDatail} />
+      <ReviewHeader packageName={review.packageName} userName={review.userName} rates={review.rates} />
+      <ReviewContent imageList={review.imageList} reviewDetail={review.reviewDetail} />
     </ReviewWrapper>
   );
 };
