@@ -17,7 +17,7 @@ const Review = () => {
       try {
         setReview(null);
 
-        const { data } = await axios.get(`${API_BASE_URL}/review/${review_id}`);
+        const { data } = await axios.get(`${API_BASE_URL}` + `review/${review_id}`);
         setReview(data.data);
       } catch (e) {
         console.log('error');
