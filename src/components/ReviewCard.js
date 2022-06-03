@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import Img from 'assets/reviewImg.png';
+import { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
 
 const ReviewCard = styled.article`
   background-color: white;
@@ -10,6 +11,7 @@ const ReviewCard = styled.article`
   border-radius: 22px;
   margin: 0 11px 0 11px;
   cursor: pointer;
+  /* opacity: ${(props) => props.opacity}; */
 `;
 
 const ReviewImg = styled.img`
@@ -17,15 +19,16 @@ const ReviewImg = styled.img`
   height: 50%;
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
+  min-height: 255px;
 `;
 
 const ReviewContents = styled.div`
   display: flex;
   flex-direction: column;
-  font-family: 'GmarketSansMedium';
-  font-size: 14px;
   color: black;
   margin: 22px 18px;
+  font: ${({ theme }) => theme.font.body2};
+  min-height: 270px;
 `;
 
 const Username = styled.span`
@@ -36,6 +39,7 @@ const Username = styled.span`
 const ReviewText = styled.span`
   margin-bottom: 2px;
   line-height: 22px;
+  min-height: 65px;
 `;
 
 const MoreBtn = styled.button`
@@ -57,25 +61,60 @@ const Products = styled.span`
 const ReviewDate = styled.span`
   font-size: 13px;
   text-align: right;
+  margin-bottom: 32px;
+`;
+
+const ReviewWrapper = styled.div`
+  display: flex;
+  overflow: hidden;
 `;
 
 const ReviewCardSection = () => {
-  return (
-    <ReviewCard>
-      <ReviewImg src={Img} />
-      <ReviewContents>
-        <Username>***님</Username>
-        <ReviewText>
-          오늘 배송이와서 바로 라면을 끓여서 먹는중인 데 너무 맛있어서 깜짝 놀랐어요 ㅎㅎ 배송도 굉장히 빨리 와서
-          만족합니다!
-        </ReviewText>
-        <MoreBtn>더보기 &nbsp; 〉 &nbsp;</MoreBtn>
-        <Package>자유구성 패키지</Package>
-        <Products>소고기미역국라면 외 4개</Products>
-        <ReviewDate>2022-02-16</ReviewDate>
-      </ReviewContents>
-    </ReviewCard>
-  );
+  const [reviewList, setReviewList] = useState([]);
+  const moveReview = useRef();
+
+  const getReviews = async () => {
+    const getAPI = await axios.get('/review');
+    setReviewList(getAPI.data.data);
+    console.log(getAPI.data.data);
+  };
+
+  useEffect(() => {
+    getReviews();
+    setInterval(slideReviews, 4000);
+  }, []);
+
+  const slideReviews = () => {
+    if (moveReview.current && reviewList) {
+      moveReview.current.style.transform = 'translateX(330px)';
+      // setReviewList((prevList) => [...prevList.slice(1), prevList[0]]);
+      // changeIndex();
+    }
+  };
+
+  const changeIndex = () => {
+    setReviewList((prevList) => [...prevList.slice(1), prevList[0]]);
+  };
+
+  const showReviewList = () => {
+    return reviewList.map((review, index) => (
+      <ReviewCard key={index}>
+        <ReviewImg src={review.thumbnail[0]}></ReviewImg>
+        <ReviewContents>
+          <Username>{review.userName[0]}**님</Username>
+          <ReviewText>{review.description}</ReviewText>
+          <MoreBtn>더보기 &nbsp; 〉</MoreBtn>
+          <Package>{review.packageName}</Package>
+          <Products>
+            {review.productList[0]} 외 {review.productList.length - 1}개
+          </Products>
+          <ReviewDate>{review.reviewDate.slice(0, 10)}</ReviewDate>
+        </ReviewContents>
+      </ReviewCard>
+    ));
+  };
+
+  return <ReviewWrapper ref={moveReview}>{showReviewList()}</ReviewWrapper>;
 };
 
 export default ReviewCardSection;

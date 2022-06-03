@@ -1,18 +1,22 @@
 import styled from 'styled-components';
 
 const IntroSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0;
   background-color: #f7f8fb;
   height: 718px;
 `;
 
 const IntroTitle = styled.h3`
+  font: ${({ theme }) => theme.font.display3};
   text-align: center;
   color: black;
   padding-top: 86px;
   margin-top: 0;
-  font-size: 58px;
-  font-family: 'Gmarket Sans';
+  font-weight: 800;
+  font-family: 'GmarketSansBold';
 `;
 
 const IntroTitlePoint = styled.span`
@@ -21,13 +25,25 @@ const IntroTitlePoint = styled.span`
 
 const IntroText = styled.article`
   color: black;
-  font-family: 'Gmarket Sans';
-  font-size: 28px;
   text-align: center;
   line-height: 128%;
+  margin-top: 20px;
+  font: ${({ theme }) => theme.font.body7};
 `;
 const IntroTextPoint = styled.span`
   color: #f44402;
+`;
+
+const RamenUseBtn = styled.button`
+  background-color: #05377b;
+  width: 379px;
+  height: 70px;
+  border-radius: 60px;
+  box-shadow: 0px 7px 0px 0px rgb(6 55 123 / 10%);
+  color: white;
+  font: ${({ theme }) => theme.font.subhead4};
+  margin-top: 52px;
+  cursor: pointer;
 `;
 
 const IntroLayout = () => {
@@ -52,6 +68,7 @@ const IntroLayout = () => {
         <br />
         여러분들을 위해 <IntroTextPoint>오늘의 라면</IntroTextPoint>이 탄생했습니다.
       </IntroText>
+      <RamenUseBtn>오늘의 라면 100% 활용법 〉</RamenUseBtn>
     </IntroSection>
   );
 };
