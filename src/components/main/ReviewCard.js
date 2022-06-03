@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE_URL from 'api';
 
 const ReviewCard = styled.article`
   background-color: white;
@@ -77,7 +78,7 @@ const ReviewCardSection = () => {
   const getReviews = async () => {
     const {
       data: { data },
-    } = await axios.get('/review');
+    } = await axios.get(`${API_BASE_URL}/review`);
     setReviewList(data);
   };
 

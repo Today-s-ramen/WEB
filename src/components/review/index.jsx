@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import ReviewHeader from './ReviewHeader';
 import ReviewContent from './ReviewContent';
+import API_BASE_URL from 'api';
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -16,7 +17,7 @@ const Review = () => {
       try {
         setReview(null);
 
-        const { data } = await axios.get(`/review/${review_id}`);
+        const { data } = await axios.get(`${API_BASE_URL}/review/${review_id}`);
         setReview(data.data);
       } catch (e) {
         console.log('error');
