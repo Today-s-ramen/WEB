@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Character from 'assets/Chracater.png';
 import { postSubscribeOptions } from 'api/subscribe';
+import ERROR_MSG from './constant';
 
 const PageMoveWrapper = styled.section`
   display: flex;
@@ -44,22 +46,27 @@ const PageMoveWrapper = styled.section`
 `;
 
 const SubscribePageMoveBtns = ({ selectedPeriod, selectedQuantity }) => {
+  const navigate = useNavigate();
   const handleSubmit = async () => {
-    if (!selectedPeriod) return toast.error('구독 주기를 선택해주세요');
-    if (!selectedQuantity) return toast.error('구독 수량을 선택해주세요');
+    if (!selectedPeriod) return toast.error(ERROR_MSG.PERIOD);
+    if (!selectedQuantity) return toast.error(ERROR_MSG.QUANTITY);
 
-    await postSubscribeOptions({
+    const { isOK } = await postSubscribeOptions({
       selectedPeriod: selectedPeriod.period,
       selectedQuantity: selectedQuantity.quantity,
     });
-    // 페이지 이동
-  };
 
-  const handlePrevMove = () => {};
+    if (isOK) navigate('/');
+    else return toast.error(ERROR_MSG.SERVER);
+  };
+  const handlePrevMove = () => navigate('/');
+
   return (
     <PageMoveWrapper>
       <div className="button-wrapper">
-        <button className="prev">이전</button>
+        <button className="prev" onClick={handlePrevMove}>
+          이전
+        </button>
         <button className="next" onClick={handleSubmit}>
           다음
         </button>
