@@ -22,7 +22,7 @@ const TextTitle = styled.h1`
   color: black;
   margin-bottom: 8px;
 `;
-const TextContents = styled.text`
+const TextContents = styled.p`
   font-size: 17px;
   font-family: 'GmarketSansMedium';
   font-weight: 400;
