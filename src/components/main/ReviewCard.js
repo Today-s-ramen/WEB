@@ -74,30 +74,32 @@ const ReviewCardSection = () => {
   const moveReview = useRef();
 
   const getReviews = async () => {
-    const getAPI = await axios.get('/review');
-    setReviewList(getAPI.data.data);
-    console.log(getAPI.data.data);
+    const {
+      data: { data },
+    } = await axios.get('/review');
+    setReviewList(data);
+    console.log(data);
   };
 
   useEffect(() => {
     getReviews();
-    setInterval(slideReviews, 4000);
+    // setInterval(slideReviews, 4000);
   }, []);
 
-  const slideReviews = () => {
-    if (moveReview.current && reviewList) {
-      moveReview.current.style.transform = 'translateX(330px)';
-      // setReviewList((prevList) => [...prevList.slice(1), prevList[0]]);
-      // changeIndex();
-    }
-  };
+  // const slideReviews = () => {
+  //   if (moveReview.current && reviewList) {
+  //     moveReview.current.style.transform = 'translateX(330px)';
+  //     setReviewList((prevList) => [...prevList.slice(1), prevList[0]]);
+  //     changeIndex();
+  //   }
+  // };
 
-  const changeIndex = () => {
-    setReviewList((prevList) => [...prevList.slice(1), prevList[0]]);
-  };
+  // const changeIndex = () => {
+  //   setReviewList((prevList) => [...prevList.slice(1), prevList[0]]);
+  // };
 
   const showReviewList = () => {
-    return reviewList.map((review, index) => (
+    return reviewList?.map((review, index) => (
       <ReviewCard key={index}>
         <ReviewImg src={review.thumbnail[0]}></ReviewImg>
         <ReviewContents>
