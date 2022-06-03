@@ -5,7 +5,7 @@ import SubscribeTitle from './SubscribeTitle';
 import ShipmentPeriod from './ShipmentPeriod';
 import ShipmentQuantity from './ShipmentQuantity';
 import PeriodNotify from './PeriodNotify';
-import SubscribePageMove from './SubscribePageMove';
+import SubscribePageMoveBtns from './SubscribePageMoveBtns';
 
 import { getDeliveryOptions } from 'api/subscribe';
 
@@ -43,7 +43,10 @@ const Subscribe = () => {
       <SubscribeTitle />
       <ShipmentPeriod periodList={periodList} setSelectedPeriod={setSelectedPeriod} />
       <ShipmentQuantity quantityList={quantityList} setSelectedQuantity={setSelectedQuantity} />
-      <SubscribePageMove />
+      <SubscribePageMoveBtns
+        selectedPeriod={periodList.find((value) => value.selected)}
+        selectedQuantity={quantityList.find((value) => value.selected)}
+      />
       <PeriodNotify />
     </SubscribeWrapper>
   );
