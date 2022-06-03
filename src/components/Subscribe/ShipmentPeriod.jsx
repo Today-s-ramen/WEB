@@ -20,6 +20,7 @@ const ShipmentPeriodWrapper = styled.section`
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+    z-index: 2;
   }
 `;
 
@@ -60,8 +61,6 @@ const ShipmentPeriod = ({ periodList, setSelectedPeriod }) => {
     });
     setSelectedPeriod(updatedPeriodListState);
   };
-
-  // console.log('period', periodList);
   return (
     <ShipmentPeriodWrapper>
       <h3>배송주기</h3>

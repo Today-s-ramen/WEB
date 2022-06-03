@@ -21,6 +21,7 @@ const ShipmentQuantityWrapper = styled.section`
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+    z-index: 2;
   }
 `;
 
