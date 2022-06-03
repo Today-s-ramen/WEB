@@ -31,7 +31,7 @@ const DetailCard = styled.img`
   margin: 0;
 `;
 
-const CardText = styled.text`
+const CardText = styled.p`
   color: black;
   font-family: 'GmarketSansMedium';
   font-size: 40px;

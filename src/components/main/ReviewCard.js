@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const ReviewCard = styled.article`
@@ -11,7 +12,6 @@ const ReviewCard = styled.article`
   border-radius: 22px;
   margin: 0 11px 0 11px;
   cursor: pointer;
-  /* opacity: ${(props) => props.opacity}; */
 `;
 
 const ReviewImg = styled.img`
@@ -72,33 +72,39 @@ const ReviewWrapper = styled.div`
 const ReviewCardSection = () => {
   const [reviewList, setReviewList] = useState([]);
   const moveReview = useRef();
+  const navigate = useNavigate();
 
   const getReviews = async () => {
-    const getAPI = await axios.get('/review');
-    setReviewList(getAPI.data.data);
-    console.log(getAPI.data.data);
+    const {
+      data: { data },
+    } = await axios.get('/review');
+    setReviewList(data);
   };
 
   useEffect(() => {
     getReviews();
-    setInterval(slideReviews, 4000);
   }, []);
 
-  const slideReviews = () => {
-    if (moveReview.current && reviewList) {
-      moveReview.current.style.transform = 'translateX(330px)';
-      // setReviewList((prevList) => [...prevList.slice(1), prevList[0]]);
-      // changeIndex();
-    }
+  const handleClick = (id) => {
+    navigate(`review/${id}`);
   };
 
-  const changeIndex = () => {
-    setReviewList((prevList) => [...prevList.slice(1), prevList[0]]);
-  };
+  // TODO Carousel
+  // const slideReviews = () => {
+  //   if (moveReview.current && reviewList) {
+  //     moveReview.current.style.transform = 'translateX(330px)';
+  //     setReviewList((prevList) => [...prevList.slice(1), prevList[0]]);
+  //     changeIndex();
+  //   }
+  // };
+
+  // const changeIndex = () => {
+  //   setReviewList((prevList) => [...prevList.slice(1), prevList[0]]);
+  // };
 
   const showReviewList = () => {
-    return reviewList.map((review, index) => (
-      <ReviewCard key={index}>
+    return reviewList?.map((review) => (
+      <ReviewCard onClick={() => handleClick(review._id)} key={review._id}>
         <ReviewImg src={review.thumbnail[0]}></ReviewImg>
         <ReviewContents>
           <Username>{review.userName[0]}**님</Username>
