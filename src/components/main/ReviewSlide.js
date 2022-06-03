@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import ReviewCardSection from './ReviewCard';
-import { useNavigate } from 'react-router-dom';
 
 const StyleRoot = styled.section`
   background-color: #ffc78e;
@@ -29,8 +28,6 @@ const SubTitle = styled.span`
 `;
 
 const ReviewSlide = () => {
-  const navigate = useNavigate();
-
   return (
     <StyleRoot>
       <ReviewTitle>
@@ -38,7 +35,7 @@ const ReviewSlide = () => {
         이미 많은 분들이 <br />
         오늘의 라면을 시작했어요!
       </ReviewTitle>
-      <ReviewCardSection onClick={() => navigate('review')} />
+      <ReviewCardSection />
     </StyleRoot>
   );
 };
