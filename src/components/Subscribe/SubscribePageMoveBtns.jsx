@@ -1,5 +1,9 @@
 import styled from 'styled-components';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Character from 'assets/Chracater.png';
+import { postSubscribeOptions } from 'api/subscribe';
 
 const PageMoveWrapper = styled.section`
   display: flex;
@@ -7,7 +11,6 @@ const PageMoveWrapper = styled.section`
   justify-content: center;
   position: sticky;
   bottom: 50px;
-  z-index: -1;
 
   .button-wrapper {
     width: 690px;
@@ -21,6 +24,7 @@ const PageMoveWrapper = styled.section`
       padding: 20px 150px;
       border-radius: 6px;
       font: ${({ theme }) => theme.font.body6};
+      cursor: pointer;
     }
 
     .prev {
@@ -39,18 +43,33 @@ const PageMoveWrapper = styled.section`
   }
 `;
 
-const SubscribePageMove = () => {
+const SubscribePageMoveBtns = ({ selectedPeriod, selectedQuantity }) => {
+  const handleSubmit = async () => {
+    if (!selectedPeriod) return toast.error('구독 주기를 선택해주세요');
+    if (!selectedQuantity) return toast.error('구독 수량을 선택해주세요');
+
+    await postSubscribeOptions({
+      selectedPeriod: selectedPeriod.period,
+      selectedQuantity: selectedQuantity.quantity,
+    });
+    // 페이지 이동
+  };
+
+  const handlePrevMove = () => {};
   return (
     <PageMoveWrapper>
       <div className="button-wrapper">
         <button className="prev">이전</button>
-        <button className="next">다음</button>
+        <button className="next" onClick={handleSubmit}>
+          다음
+        </button>
       </div>
       <div className="image-wrapper">
         <img src={Character} alt="character" />
       </div>
+      <ToastContainer />
     </PageMoveWrapper>
   );
 };
 
-export default SubscribePageMove;
+export default SubscribePageMoveBtns;
